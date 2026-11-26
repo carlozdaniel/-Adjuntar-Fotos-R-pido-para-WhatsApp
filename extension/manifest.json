@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Adjuntar Fotos Rápido para WhatsApp Web",
+  "short_name": "Fotos Rápido",
+  "version": "1.1.0",
+  "description": "Guarda tus imágenes por proyecto y pégalas en WhatsApp Web con un clic, o deja que tu sistema las adjunte al mensaje.",
+  "icons": { "16": "iconos/16.png", "32": "iconos/32.png", "48": "iconos/48.png", "128": "iconos/128.png" },
+  "action": {
+    "default_title": "Adjuntar Fotos Rápido",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "iconos/16.png", "32": "iconos/32.png" }
+  },
+  "background": { "service_worker": "fondo.js" },
+  "permissions": ["storage", "unlimitedStorage", "scripting", "activeTab"],
+  "host_permissions": ["https://web.whatsapp.com/*"],
+  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "content_scripts": [
+    { "matches": ["https://web.whatsapp.com/*"], "js": ["wa.js"], "run_at": "document_start" },
+    { "matches": ["https://web.whatsapp.com/*"], "js": ["wa-main.js"], "run_at": "document_start", "world": "MAIN" },
+    { "matches": ["http://localhost/*", "http://127.0.0.1/*"], "js": ["puente.js"], "run_at": "document_start" }
+  ]
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Adjuntar Fotos Rápido</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="iconos/48.png" alt="">
+    <b>Fotos Rápido</b>
+    <a href="ayuda.html" target="_blank" class="ayuda" title="Cómo se usa">?</a>
+  </header>
+
+  <section id="sec-galeria">
+    <div class="proyecto">
+      <label for="proyecto" class="sr">Proyecto</label>
+      <select id="proyecto" title="Proyecto"></select>
+      <button class="icono" id="nuevo" title="Nuevo proyecto" aria-label="Nuevo proyecto">+</button>
+      <button class="icono" id="renombrar" title="Cambiar nombre" aria-label="Cambiar nombre">✎</button>
+      <button class="icono" id="borrar" title="Eliminar proyecto" aria-label="Eliminar proyecto">🗑</button>
+    </div>
+
+    <form id="form-nombre" class="fila" hidden>
+      <input id="nombre" maxlength="40" placeholder="Nombre del proyecto" required>
+      <button class="btn prim" type="submit">Guardar</button>
+      <button class="btn" type="button" id="cancelar">Cancelar</button>
+    </form>
+
+    <div id="confirmar" class="aviso error fila" hidden>
+      <span id="confirmar-txt"></span>
+      <button class="btn" type="button" id="si-borrar">Eliminar</button>
+      <button class="btn" type="button" id="no-borrar">No</button>
+    </div>
+
+    <p class="muted nota" id="ayuda-galeria"></p>
+    <div class="galeria" id="galeria"></div>
+    <textarea id="pie" rows="2" maxlength="4000" placeholder="Texto que acompaña la imagen (opcional)"></textarea>
+    <div id="msg" hidden></div>
+  </section>
+
+  <section id="sec-sitio" hidden>
+    <h2>Este sitio</h2>
+    <div class="sitio"><span id="origen"></span><button class="btn prim" id="permitir">Permitir</button></div>
+    <p class="muted nota">Permite que tu sistema en este sitio adjunte imágenes a los mensajes que abre en WhatsApp Web.</p>
+  </section>
+
+  <section id="sec-permitidos" hidden>
+    <h2>Sitios permitidos</h2>
+    <div id="permitidos" class="lista"></div>
+  </section>
+
+  <footer><a href="ayuda.html" target="_blank">Cómo se usa</a><a href="https://web.whatsapp.com" target="_blank">Abrir WhatsApp Web</a></footer>
+  <input type="file" id="archivo" accept="image/png,image/jpeg,image/gif,image/webp" multiple hidden>
+  <script src="almacen.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

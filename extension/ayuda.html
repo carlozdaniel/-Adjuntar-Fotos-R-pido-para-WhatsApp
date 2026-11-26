@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adjuntar Fotos Rápido · Cómo se usa</title>
+  <link rel="icon" href="iconos/32.png">
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    body { line-height: 1.6; }
+    .hero { background: linear-gradient(135deg, var(--verde-osc), var(--verde)); color: #fff; padding: 48px 20px 40px; }
+    .hero .in, main { max-width: 820px; margin: 0 auto; }
+    .hero img { width: 64px; height: 64px; }
+    .hero h1 { margin: 10px 0 4px; font-size: 32px; }
+    .hero p { margin: 0; opacity: .9; font-size: 17px; }
+    nav { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    nav a { color: #fff; background: rgba(255,255,255,.14); padding: 6px 12px; border-radius: 99px; text-decoration: none; font-size: 14px; }
+    main { padding: 8px 20px 60px; }
+    h2 { margin: 40px 0 10px; font-size: 22px; }
+    h3 { margin: 22px 0 6px; font-size: 16px; }
+    ol.pasos { counter-reset: p; list-style: none; padding: 0; display: grid; gap: 10px; }
+    ol.pasos li { counter-increment: p; position: relative; padding: 12px 14px 12px 52px; background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 10px; }
+    ol.pasos li::before { content: counter(p); position: absolute; left: 14px; top: 12px; width: 26px; height: 26px; border-radius: 50%; background: var(--verde); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 14px; }
+    pre { background: #0f1b20; color: #d6e2e6; padding: 14px 16px; border-radius: 10px; overflow-x: auto; font-size: 13px; line-height: 1.5; }
+    code { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: .92em; }
+    p code, li code, td code { background: var(--tarjeta); border: 1px solid var(--borde); padding: 1px 5px; border-radius: 5px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+    th { color: var(--suave); font-weight: 600; }
+    .aviso { margin: 14px 0; }
+    details { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 10px; padding: 10px 14px; margin: 8px 0; }
+    summary { cursor: pointer; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="hero"><div class="in">
+    <img src="iconos/128.png" alt="">
+    <h1>Adjuntar Fotos Rápido</h1>
+    <p>Guarda tus imágenes por proyecto y pégalas en WhatsApp Web con un clic, o deja que tu sistema las adjunte solas al mensaje.</p>
+    <nav><a href="#uso">Uso diario</a><a href="#proyectos">Proyectos</a><a href="#sistema">Con tu sistema</a><a href="#dev">Para desarrolladores</a><a href="#privacidad">Privacidad</a><a href="#problemas">Problemas comunes</a></nav>
+  </div></div>
+
+  <main>
+    <h2 id="uso">Uso diario: tus imágenes a un clic</h2>
+    <p>Guarda las imágenes que mandas seguido (logo, promociones, catálogo, horario, formas de pago) y pégalas en cualquier chat sin buscarlas cada vez.</p>
+    <ol class="pasos">
+      <li>Fija la extensión: haz clic en el ícono de rompecabezas 🧩 de Chrome y en el alfiler junto a <b>Adjuntar Fotos Rápido</b>.</li>
+      <li>Haz clic en el ícono de la extensión y luego en <b>+</b> (o arrastra las imágenes a la ventana). Se quedan guardadas en esta computadora.</li>
+      <li>Abre <a href="https://web.whatsapp.com" target="_blank">WhatsApp Web</a> y entra al chat de la persona.</li>
+      <li>Abre la extensión, elige el proyecto, escribe el texto si quieres que vaya debajo de la imagen y toca la imagen.</li>
+      <li>Revisa la vista previa y presiona <b>Enviar</b>. La extensión nunca envía por ti.</li>
+    </ol>
+    <div class="aviso">Si ya tenías un mensaje escrito en el chat y no pones texto en la extensión, ese mensaje pasa a ser el texto de la imagen.</div>
+
+    <h2 id="proyectos">Proyectos: una galería por negocio o cliente</h2>
+    <p>Si manejas varios negocios, sucursales o clientes, crea un proyecto para cada uno. Cada proyecto tiene sus propias imágenes y su propio texto de pie, así nunca mandas el logo o la promoción equivocada.</p>
+    <ol class="pasos">
+      <li>En la ventana de la extensión toca <b>+</b> junto al nombre del proyecto y escribe el nombre (por ejemplo «Óptica», «Lavandería», «Taller»).</li>
+      <li>Con ese proyecto elegido, agrega sus imágenes. El número entre paréntesis es cuántas tiene.</li>
+      <li>Escribe un texto de pie si siempre mandas el mismo (por ejemplo tu horario o tus formas de pago). Se guarda en ese proyecto.</li>
+      <li>Para cambiar de proyecto, elígelo en la lista. La extensión recuerda el último que usaste.</li>
+    </ol>
+    <p class="muted">Con ✎ cambias el nombre y con 🗑 eliminas el proyecto y sus imágenes (pide confirmación). Siempre queda al menos un proyecto.</p>
+
+    <h2 id="sistema">Con tu sistema (citas, pedidos, cobranza…)</h2>
+    <p>Si usas un sistema web que abre WhatsApp con el mensaje ya escrito (por ejemplo, para avisar que un pedido está listo), y ese sistema es compatible con esta extensión, la imagen se adjunta sola y el mensaje sale como <b>una imagen con su texto</b>.</p>
+    <ol class="pasos">
+      <li>Entra a tu sistema en Chrome.</li>
+      <li>Haz clic en el ícono de la extensión y en <b>Permitir</b> para ese sitio. Esto solo se hace una vez. En sistemas que corren en la misma computadora (<code>localhost</code>) no hace falta.</li>
+      <li>Recarga la página del sistema.</li>
+      <li>Cuando el sistema abra WhatsApp Web, la imagen ya estará pegada con el texto. Solo presiona <b>Enviar</b>.</li>
+    </ol>
+    <p class="muted">Puedes ver y quitar los sitios permitidos desde la ventana de la extensión.</p>
+
+    <h2 id="dev">Para desarrolladores</h2>
+    <p>Cualquier página permitida por el usuario (o servida desde <code>localhost</code>) puede pedir que se adjunte una imagen al siguiente chat que abra en WhatsApp Web. Cada sistema manda su propia imagen, así que si tienes varios proyectos cada uno adjunta la suya sin configurar nada más.</p>
+
+    <h3>1. Detectar la extensión</h3>
+    <pre><code>const instalada = !!document.documentElement.dataset.waImagen; // contiene la versión, p. ej. "1.1.0"</code></pre>
+
+    <h3>2. Dejar la imagen lista y abrir el chat</h3>
+    <pre><code>function enviarConImagen({ telefono, texto, imagen, nombre = 'imagen' }) {
+  const id = crypto.randomUUID();
+  return new Promise((resolve) =&gt; {
+    const escuchar = (e) =&gt; {
+      if (e.source !== window || e.data?.waImagen !== 'respuesta' || e.data.id !== id) return;
+      removeEventListener('message', escuchar);
+      if (e.data.ok) {
+        window.open(`https://web.whatsapp.com/send?phone=${telefono}&amp;text=${encodeURIComponent(texto)}`, 'whatsapp');
+      }
+      resolve(e.data); // { ok: true } o { ok: false, error: '...' }
+    };
+    addEventListener('message', escuchar);
+    postMessage({ waImagen: 'enviar', id, telefono, texto, imagen, nombre }, location.origin);
+  });
+}</code></pre>
+    <p class="muted">Abre la ventana dentro del mismo clic del usuario (o en menos de 5 segundos) para que Chrome no la bloquee.</p>
+
+    <h3>Campos</h3>
+    <table>
+      <tr><th>Campo</th><th>Descripción</th></tr>
+      <tr><td><code>telefono</code></td><td>Número con lada del país, solo dígitos (p. ej. <code>5215512345678</code>). Debe ser el mismo que el <code>phone=</code> de la URL que abres.</td></tr>
+      <tr><td><code>imagen</code></td><td>Data URL (<code>data:image/png;base64,…</code>), un <code>Blob</code> o una URL del mismo sitio (<code>/uploads/logo.png</code>). PNG, JPG, GIF o WebP, máximo 5 MB.</td></tr>
+      <tr><td><code>texto</code></td><td>Texto que irá debajo de la imagen. Usa el mismo que pones en la URL.</td></tr>
+      <tr><td><code>nombre</code></td><td>Nombre del archivo (opcional).</td></tr>
+    </table>
+
+    <h3>Cómo se comporta</h3>
+    <ul>
+      <li>La imagen espera como máximo <b>3 minutos</b> y solo se usa si el chat que se abre es del mismo teléfono.</li>
+      <li>Se usa una sola vez. Cada mensaje nuevo reemplaza al anterior.</li>
+      <li>Si no se puede adjuntar, el mensaje se queda escrito como texto normal.</li>
+      <li>Nunca presiona Enviar: el usuario revisa y envía.</li>
+      <li>Solo funciona con WhatsApp Web en Chrome o Edge de computadora (no en la app de escritorio ni en el celular).</li>
+    </ul>
+
+    <h2 id="privacidad">Privacidad</h2>
+    <ul>
+      <li>Las imágenes y textos se guardan <b>solo en tu computadora</b> (almacenamiento local de Chrome).</li>
+      <li>La extensión <b>no envía datos a ningún servidor</b>, no tiene analíticas ni publicidad y no lee tus chats.</li>
+      <li>Solo entra a WhatsApp Web y a los sitios que tú permitas.</li>
+    </ul>
+
+    <h2 id="problemas">Problemas comunes</h2>
+    <details><summary>Toco la imagen y dice "Abre un chat primero"</summary><p>Entra a una conversación en WhatsApp Web antes de abrir la extensión.</p></details>
+    <details><summary>Dice "Recarga la pestaña de WhatsApp Web"</summary><p>La extensión intenta conectarse sola con la pestaña. Si aun así aparece, recarga WhatsApp Web (F5).</p></details>
+    <details><summary>¿Puedo pasar mis imágenes a otra computadora?</summary><p>Se guardan solo en esta computadora. En la otra, vuelve a agregarlas en el proyecto correspondiente.</p></details>
+    <details><summary>Mi sistema no adjunta la imagen</summary><p>Revisa que el sitio esté en <b>Sitios permitidos</b> y recarga la página del sistema. Si WhatsApp se abre en la app de escritorio o en otro navegador, la extensión no puede actuar; usa WhatsApp Web en Chrome.</p></details>
+    <details><summary>Dejó de funcionar de un día a otro</summary><p>WhatsApp cambia su página de vez en cuando. Chrome actualiza la extensión sola cuando hay una corrección; mientras tanto el mensaje se sigue abriendo como texto.</p></details>
+
+    <p class="muted" style="margin-top:40px;font-size:13px">Adjuntar Fotos Rápido es una herramienta independiente y no está afiliada a WhatsApp ni a Meta.</p>
+  </main>
+</body>
+</html>
