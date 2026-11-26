@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo de integración · Adjuntar Fotos Rápido</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 560px; margin: 40px auto; padding: 0 16px; line-height: 1.5; color: #1f2a2e; }
+    label { display: block; margin: 14px 0 4px; font-weight: 600; }
+    input, textarea, select { width: 100%; box-sizing: border-box; padding: 8px; font: inherit; border: 1px solid #cfd8dc; border-radius: 8px; }
+    button { margin-top: 18px; padding: 10px 16px; font: inherit; font-weight: 600; color: #fff; background: #128c7e; border: 0; border-radius: 8px; cursor: pointer; }
+    .estado { margin-top: 16px; padding: 10px 12px; border-radius: 8px; background: #e7f6f2; }
+    .estado.mal { background: #fdecea; color: #c0392b; }
+  </style>
+</head>
+<body>
+  <h1>Ejemplo de integración</h1>
+  <p id="extension">Buscando la extensión…</p>
+
+  <form id="form">
+    <label for="tel">Teléfono con lada de país</label>
+    <input id="tel" placeholder="5215512345678" required>
+
+    <label for="tipo">Mensaje</label>
+    <select id="tipo">
+      <option value="pedido">Pedido listo</option>
+      <option value="promo">Promoción</option>
+    </select>
+
+    <label for="texto">Texto</label>
+    <textarea id="texto" rows="3">Hola, tu pedido ya está listo para recoger.</textarea>
+
+    <label for="foto">Imagen (opcional; si no eliges, se usa una de ejemplo)</label>
+    <input id="foto" type="file" accept="image/png,image/jpeg,image/gif,image/webp">
+
+    <button type="submit">Abrir WhatsApp con imagen</button>
+  </form>
+  <div id="estado" class="estado" hidden></div>
+
+  <script>
+    const $ = (s) => document.querySelector(s);
+
+    // Cada sistema decide qué imagen va con cada tipo de mensaje.
+    const COLORES = { pedido: '#128c7e', promo: '#e67e22' };
+    function imagenDeEjemplo(tipo) {
+      const c = document.createElement('canvas');
+      c.width = 800; c.height = 500;
+      const g = c.getContext('2d');
+      g.fillStyle = COLORES[tipo]; g.fillRect(0, 0, c.width, c.height);
+      g.fillStyle = '#fff'; g.font = 'bold 64px system-ui'; g.textAlign = 'center';
+      g.fillText(tipo === 'pedido' ? 'Pedido listo' : 'Promoción', 400, 270);
+      return c.toDataURL('image/png');
+    }
+
+    function enviarConImagen({ telefono, texto = '', imagen, nombre = 'imagen' }) {
+      const id = crypto.randomUUID();
+      return new Promise((resolve) => {
+        const escuchar = (e) => {
+          if (e.source !== window || e.data?.waImagen !== 'respuesta' || e.data.id !== id) return;
+          removeEventListener('message', escuchar);
+          resolve(e.data);
+        };
+        addEventListener('message', escuchar);
+        postMessage({ waImagen: 'enviar', id, telefono, texto, imagen, nombre }, location.origin);
+      });
+    }
+
+    const estado = (txt, mal) => { const e = $('#estado'); e.hidden = false; e.className = `estado${mal ? ' mal' : ''}`; e.textContent = txt; };
+
+    setTimeout(() => {
+      const v = document.documentElement.dataset.waImagen;
+      $('#extension').textContent = v ? `Extensión detectada (versión ${v}).` : 'No se detectó la extensión: el mensaje se abrirá solo con texto. Sirve esta página desde localhost o permite el sitio en la extensión.';
+    }, 300);
+
+    $('#form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const tel = $('#tel').value.replace(/\D/g, '');
+      const texto = $('#texto').value.trim();
+      const ventana = window.open('about:blank', 'whatsapp');
+      if (document.documentElement.dataset.waImagen) {
+        const imagen = $('#foto').files[0] || imagenDeEjemplo($('#tipo').value);
+        const r = await enviarConImagen({ telefono: tel, texto, imagen, nombre: $('#tipo').value });
+        estado(r.ok ? 'Imagen lista. Revisa WhatsApp Web y presiona Enviar.' : `Se abrirá sin imagen: ${r.error}`, !r.ok);
+      }
+      ventana.location = `https://web.whatsapp.com/send?phone=${tel}&text=${encodeURIComponent(texto)}`;
+    });
+  </script>
+</body>
+</html>
