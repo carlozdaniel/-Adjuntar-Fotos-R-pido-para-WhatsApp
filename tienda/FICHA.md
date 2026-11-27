@@ -55,7 +55,7 @@ Herramienta independiente, no afiliada a WhatsApp ni a Meta.
 
 - **Sitio web:** https://github.com/carlozdaniel/-Adjuntar-Fotos-R-pido-para-WhatsApp
 - **Asistencia:** https://github.com/carlozdaniel/-Adjuntar-Fotos-R-pido-para-WhatsApp/issues
-- **Política de privacidad:** https://github.com/carlozdaniel/-Adjuntar-Fotos-R-pido-para-WhatsApp/blob/main/PRIVACIDAD.md
+- **Política de privacidad:** https://carlozdaniel.github.io/-Adjuntar-Fotos-R-pido-para-WhatsApp/PRIVACIDAD.html
 
 ## Prácticas de privacidad
 
